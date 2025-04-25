@@ -1,0 +1,31 @@
+specVersion: "3.1"
+metadata:
+  name: sap.ui.demo.toolpageapp
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /products
+            url: https://fakestoreapi.com/products
+          - path: /carts
+            url: https://fakestoreapi.com/carts
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: sap.ui.demo.toolpageapp
+        ui5Theme: sap_fiori_3

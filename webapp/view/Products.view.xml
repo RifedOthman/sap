@@ -1,0 +1,59 @@
+<mvc:View
+	controllerName="sap.ui.demo.toolpageapp.controller.Products"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+	
+	<semantic:SemanticPage id="page" headerPinnable="false">
+		<semantic:titleHeading>
+			<Title text="{i18n>productsTitle}" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<Table id="productsTable" 
+				items="{/Products}"
+				width="auto">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>productsList}" level="H3"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://refresh" press=".onRefresh" tooltip="{i18n>refreshProducts}"/>
+						<Button icon="sap-icon://add" press=".onAddProduct" tooltip="{i18n>addProduct}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>productID}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>name}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>category}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>price}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>description}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{ProductID}"/>
+							<Text text="{Name}"/>
+							<Text text="{Category}"/>
+							<Text text="{Price} $"/>
+							<Text text="{Description}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View> 
