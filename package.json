@@ -1,20 +1,32 @@
 {
   "name": "shop-admin-tool",
   "version": "1.0.0",
-  "description": "Shop Administration Tool Backend",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
+ "description": "An SAP Fiori application.",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html",
   "dependencies": {
-    "axios": "^1.6.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "ui5-middleware-simpleproxy": "^3.4.1"
   },
   "devDependencies": {
-    "@sap/ux-ui5-tooling": "^1.17.3",
-    "nodemon": "^3.0.1"
-  }
+    "@sap-ux/ui5-middleware-fe-mockserver": "2",
+    "@sap/ux-ui5-tooling": "1",
+    "@ui5/cli": "^3.0.0"
+  },
+  "scripts": {
+    "start": "fiori run --open \"test/flpSandbox.html?sap-client=001&sap-ui-xx-viewCache=false#project1-display\"",
+    "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-client=001&sap-ui-xx-viewCache=false#project1-display\"",
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config",
+    "start-noflp": "fiori run --open \"index.html?sap-client=001&sap-ui-xx-viewCache=false\"",
+    "start-mock": "fiori run --config ./ui5-mock.yaml --open \"test/flpSandbox.html?sap-client=001&sap-ui-xx-viewCache=false#project1-display\"",
+    "int-test": "fiori run --config ./ui5-mock.yaml --open 'test/integration/opaTests.qunit.html'",
+    "start-variants-management": "fiori run --open \"preview.html?&sap-client=001&sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "unit-test": "fiori run --config ./ui5-mock.yaml --open 'test/unit/unitTests.qunit.html'"
+  },
+  "sapuxLayer": "CUSTOMER_BASE"
 }

@@ -14,10 +14,9 @@ server:
             - /test-resources
           url: https://ui5.sap.com
         backend:
-          - path: /products
-            url: https://fakestoreapi.com/products
-          - path: /carts
-            url: https://fakestoreapi.com/carts
+          - path: /fakestore/        
+            pathPrefix: /
+            url: https://fakestoreapi.com/
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
