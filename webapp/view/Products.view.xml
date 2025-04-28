@@ -19,8 +19,9 @@
 				width="auto">
 				<headerToolbar>
 					<Toolbar>
-						<Title text="{i18n>productsList}" level="H3"/>
+						<SearchField id="productSearchField" width="30%" search=".onProductSearch" placeholder="Search products..."/>
 						<ToolbarSpacer/>
+						<Title text="{i18n>productsList}" level="H3"/>
 						<Button icon="sap-icon://refresh" press=".onRefresh" tooltip="{i18n>refreshProducts}"/>
 						<Button icon="sap-icon://add" press=".onAddProduct" tooltip="{i18n>addProduct}"/>
 					</Toolbar>

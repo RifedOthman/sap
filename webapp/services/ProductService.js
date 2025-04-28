@@ -29,7 +29,21 @@ sap.ui.define([], function () {
         });
     }
 
+    function filterProducts(aProducts, sQuery) {
+        if (!sQuery) {
+            return aProducts;
+        }
+        sQuery = sQuery.toLowerCase();
+        return aProducts.filter(function (oProduct) {
+            return (
+                (oProduct.Name && oProduct.Name.toLowerCase().includes(sQuery)) ||
+                (oProduct.Category && oProduct.Category.toLowerCase().includes(sQuery))
+            );
+        });
+    }
+
     return {
-        getProducts: getProducts
+        getProducts: getProducts,
+        filterProducts: filterProducts
     };
 }); 

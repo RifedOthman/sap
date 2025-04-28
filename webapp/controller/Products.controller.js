@@ -47,6 +47,23 @@ sap.ui.define([
 		
 		getRouter: function() {
 			return this.getOwnerComponent().getRouter();
+		},
+
+		onProductSearch: function(oEvent) {
+			var sQuery = oEvent.getParameter("query");
+			var oTable = this.getView().byId("productsTable");
+			var oBinding = oTable.getBinding("items");
+			var aFilters = [];
+			if (sQuery) {
+				aFilters.push(new sap.ui.model.Filter({
+					filters: [
+						new sap.ui.model.Filter("Name", sap.ui.model.FilterOperator.Contains, sQuery),
+						new sap.ui.model.Filter("Category", sap.ui.model.FilterOperator.Contains, sQuery)
+					],
+					and: false
+				}));
+			}
+			oBinding.filter(aFilters);
 		}
 	});
 });
